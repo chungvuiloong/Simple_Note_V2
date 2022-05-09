@@ -22,11 +22,7 @@ class App extends Component {
     isLoading: false,
     data: [], // stores the data from the note
     currentNote: {
-      firstname: '',
-      lastname: '',
-      phone: '',
-      role: '',
-      message: '',
+
     },
   };
 
@@ -43,6 +39,15 @@ class App extends Component {
       inputData: { ...this.state.inputData, [e.target.name]: e.target.value },
     });
   }; //end of inputHandler
+
+  popUpHandler = (e) => {
+    e.preventDefault();
+    this.setState({ showPopup: !this.state.showPopup });
+  };
+
+  closeHandler = () => {
+    window.location.reload();
+  };
 
   submitHandler = () => {
     axios.post("http://localhost:3010/notes", {...this.state.inputData})
@@ -62,7 +67,7 @@ class App extends Component {
   //Pop up the new menu
   updateHandler = (item) => {
     console.log('update pressed');
-    this.setState({updatePopup: !this.state.updatePopup , currentNote: item});
+    this.setState({updatePopup: true , currentNote: item});
   };
 
   //Save the new infor
@@ -75,19 +80,14 @@ class App extends Component {
     });
   };
 
-  popUpHandler = (e) => {
-    e.preventDefault();
-    this.setState({ showPopup: !this.state.showPopup });
-  };
+ 
 
   postHandler = (id) => {
     axios
-      .put(`http://localhost:3010/notes/${id}`).then((res) => res.data);
+      .put(`http://localhost:3010/notes/${id}`, this.state.currentNote).then((res) => res.data);
   };
 
-  closeHandler = () => {
-    window.location.reload();
-  };
+
 
   render() {
     return (

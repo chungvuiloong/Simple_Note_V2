@@ -6,7 +6,7 @@ const UpdatePopup = (props) => {
     <div className="overlay">
       <Form {...props} />
       <div>
-        <button onClick={props.close}>Oops I made a mistake</button>  
+        {/* <button onClick={props.close}>Oops I made a mistake</button>   */}
       </div>
         {/* <form onChange={props.change} onSubmit={props.onSubmit}>
           <h2>Update with new info</h2>
