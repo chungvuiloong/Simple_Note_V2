@@ -1,4 +1,4 @@
-# Notes app
+# A Simple Notes app
 
 This is a project created for REACT22K to learn controlled components and forms.
 
